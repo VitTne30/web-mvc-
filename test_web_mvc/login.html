@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form class="form">
+<!--<table class="dangnhap" border="1" width="50%" style="border-collapse: collapse">-->
+	<label for="tentaikhoan">Tên tài khoản</label>
+	<input type="text" id="tentaikhoan" name="tentaikhoan">
+	
+	<label for="matkhau">Mật khẩu</label>
+	<input type="password" id="matkhau" name="matkhau">
+	<button type="submit" class="dangnhap">Đăng nhập</button>
+	<button class="dangki">Đăng kí</button>
+<!--
+	<tr>
+        <td colspan="2" align="center">
+            <h3>
+                Đăng nhập trò chơi
+            </h3>
+        </td>
+	</tr>
+	<tr>
+		<td>Tên tài khoản</td>
+		<td><input type="text" size="60" name="tentaikhoan"></td>
+	</tr>
+	<tr>
+		<td>Mật khẩu</td>
+		<td><input type="password" size="60" name="matkhau"></td>
+	</tr>
+	<tr>
+		<td><a href="#">Quên mật khẩu?</a></td>
+		<td align="right"><a href="#">Chưa có tài khoản? Đăng kí ngay</a></td>
+	</tr>
+	<tr>
+		<td><input type="submit" name="dangnhap" value="Đăng nhập"></td>
+	</tr>
+</table>
+-->
+</form>
+</body>
+	<script>
+		const formLogin = document.querySelector('.form');
+		
+		formLogin.addEventListener('submit', (e)=>{
+			e.preventDefault();
+			
+			const formData = new FormData(formLogin);
+			
+			const res = Object.fromEntries(formData);
+			
+			fetch('http://localhost/test_web_mvc/api/account/login.php', {
+				method: 'POST',
+				body: JSON.stringify(res),
+				headers:{
+					'Content-Type': 'application/json'
+				}
+			})
+			.then(res => res.json())
+			.then(data => {})
+        	.catch(error => {});
+		});
+	</script>
+</html>
